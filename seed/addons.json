@@ -1,0 +1,20 @@
+[
+  {
+    "id": "add-001",
+    "name": "Insurance Plus",
+    "pricing_model": "per_day",
+    "price_cents": 2500
+  },
+  {
+    "id": "add-002",
+    "name": "GPS Navigation",
+    "pricing_model": "flat",
+    "price_cents": 1500
+  },
+  {
+    "id": "add-003",
+    "name": "Child Seat",
+    "pricing_model": "per_day",
+    "price_cents": 1200
+  }
+]

@@ -1,0 +1,20 @@
+:root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.5; background: #fafafa; }
+.container { max-width: 1040px; margin: 0 auto; padding: 16px; }
+.header { display:flex; justify-content:space-between; align-items:center; padding: 12px 0; border-bottom: 1px solid #ddd; }
+.brand { font-weight: 900; font-size: 20px; text-decoration:none; color: inherit; letter-spacing: .2px; }
+.nav a { margin-left: 12px; text-decoration:none; color: inherit; }
+.footer { margin-top: 28px; padding-top: 12px; border-top: 1px solid #ddd; color: #666; }
+.filters { display:flex; gap: 12px; flex-wrap: wrap; margin: 12px 0; }
+.label { display:flex; flex-direction:column; gap: 6px; max-width: 320px; }
+input { padding: 10px 12px; border: 1px solid #ccc; border-radius: 10px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 12px; }
+.card { border:1px solid #ddd; border-radius: 12px; padding: 12px; background: #fff; text-align: left; }
+.selected { outline: 2px solid #111; }
+.linkCard { text-decoration: none; color: inherit; display:block; }
+.cardTitle { font-weight: 750; }
+.muted { color:#666; font-size: 14px; }
+.price { margin-top: 8px; font-weight: 800; }
+.btn { padding: 10px 12px; border: 1px solid #111; background: #111; color: #fff; border-radius: 10px; cursor: pointer; }
+.btnLink { display:inline-block; padding: 10px 12px; border-radius: 10px; background: #111; color: #fff; text-decoration:none; }
+.error { margin-top: 10px; color: #b00020; }
+.spacer { height: 12px; }

@@ -1,0 +1,134 @@
+[
+  {
+    "id": "veh-001",
+    "make": "Prime",
+    "model": "Astra Glide",
+    "year": 2032,
+    "category": "Sedan EV",
+    "location_city": "Austin",
+    "location_state": "TX",
+    "daily_cents": 17900,
+    "weekly_discount_pct": 12,
+    "mileage_limit_per_day": 200,
+    "features": [
+      "Autopilot Assist",
+      "Panoramic Glass",
+      "Fast Charge",
+      "Ambient Cabin Lighting"
+    ],
+    "images": [
+      "veh-001-hero.jpg",
+      "veh-001-interior.jpg"
+    ]
+  },
+  {
+    "id": "veh-002",
+    "make": "Prime",
+    "model": "Neon Rover",
+    "year": 2033,
+    "category": "SUV EV",
+    "location_city": "Miami",
+    "location_state": "FL",
+    "daily_cents": 22900,
+    "weekly_discount_pct": 15,
+    "mileage_limit_per_day": 180,
+    "features": [
+      "All-Wheel Drive",
+      "Adaptive Suspension",
+      "Cabin Air Purifier",
+      "Smart Trunk"
+    ],
+    "images": [
+      "veh-002-hero.jpg",
+      "veh-002-interior.jpg"
+    ]
+  },
+  {
+    "id": "veh-003",
+    "make": "Prime",
+    "model": "Pulse Coupe",
+    "year": 2031,
+    "category": "Sport EV",
+    "location_city": "Los Angeles",
+    "location_state": "CA",
+    "daily_cents": 25900,
+    "weekly_discount_pct": 10,
+    "mileage_limit_per_day": 150,
+    "features": [
+      "Performance Mode",
+      "HUD Display",
+      "Premium Sound",
+      "Launch Assist"
+    ],
+    "images": [
+      "veh-003-hero.jpg",
+      "veh-003-interior.jpg"
+    ]
+  },
+  {
+    "id": "veh-004",
+    "make": "Prime",
+    "model": "Terra Pod",
+    "year": 2034,
+    "category": "Adventure EV",
+    "location_city": "Bozeman",
+    "location_state": "MT",
+    "daily_cents": 19900,
+    "weekly_discount_pct": 18,
+    "mileage_limit_per_day": 220,
+    "features": [
+      "Off-road Assist",
+      "Roof Rack",
+      "Thermal Cabin",
+      "Trail Navigation"
+    ],
+    "images": [
+      "veh-004-hero.jpg",
+      "veh-004-interior.jpg"
+    ]
+  },
+  {
+    "id": "veh-005",
+    "make": "Prime",
+    "model": "Metro Micro",
+    "year": 2030,
+    "category": "Compact EV",
+    "location_city": "Chicago",
+    "location_state": "IL",
+    "daily_cents": 13900,
+    "weekly_discount_pct": 20,
+    "mileage_limit_per_day": 120,
+    "features": [
+      "Easy Park Mode",
+      "City Range+",
+      "Heated Seats",
+      "Quick Unlock"
+    ],
+    "images": [
+      "veh-005-hero.jpg",
+      "veh-005-interior.jpg"
+    ]
+  },
+  {
+    "id": "veh-006",
+    "make": "Prime",
+    "model": "Shoreline Cruiser",
+    "year": 2032,
+    "category": "Luxury EV",
+    "location_city": "Red Bank",
+    "location_state": "NJ",
+    "daily_cents": 21900,
+    "weekly_discount_pct": 14,
+    "mileage_limit_per_day": 180,
+    "features": [
+      "Massaging Seats",
+      "Ambient LED",
+      "Privacy Glass",
+      "Ultra-Quiet Cabin"
+    ],
+    "images": [
+      "veh-006-hero.jpg",
+      "veh-006-interior.jpg"
+    ]
+  }
+]
