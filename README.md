@@ -72,7 +72,6 @@ Backend:
 - `JWT_SECRET` (placeholder)
 - `STRIPE_SECRET_KEY` (optional; scaffold runs without real Stripe)
 - `STRIPE_WEBHOOK_SECRET` (optional; webhook verification placeholder)
-
 ## Seeding
 
 ```bash
