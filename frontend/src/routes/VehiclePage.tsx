@@ -23,6 +23,7 @@ export default function VehiclePage() {
   const [checkIn, setCheckIn] = useState('')
   const [checkOut, setCheckOut] = useState('')
   const [quote, setQuote] = useState<Quote | null>(null)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -80,12 +81,34 @@ export default function VehiclePage() {
 
   return (
     <div>
-      {vehicle.images?.[0] && (
-        <img
-          src={`/images/${vehicle.images[0]}`}
-          alt={`${vehicle.make} ${vehicle.model}`}
-          style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '8px', marginBottom: '24px' }}
-        />
+      {vehicle.images && vehicle.images.length > 0 && (
+        <div style={{ marginBottom: '24px' }}>
+          <img
+            src={`/images/${vehicle.images[selectedImageIndex]}`}
+            alt={`${vehicle.make} ${vehicle.model}`}
+            style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '8px', marginBottom: '12px' }}
+          />
+          <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '4px' }}>
+            {vehicle.images.map((img: string, idx: number) => (
+              <img
+                key={img}
+                src={`/images/${img}`}
+                alt={`View ${idx + 1}`}
+                onClick={() => setSelectedImageIndex(idx)}
+                style={{
+                  width: '100px',
+                  height: '70px',
+                  objectFit: 'cover',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  border: selectedImageIndex === idx ? '2px solid #007bff' : '2px solid transparent',
+                  opacity: selectedImageIndex === idx ? 1 : 0.7,
+                  transition: 'all 0.2s'
+                }}
+              />
+            ))}
+          </div>
+        </div>
       )}
       <h1>{vehicle.make} {vehicle.model}</h1>
       <p className="muted">{vehicle.category} • {vehicle.year} • {vehicle.location_city}, {vehicle.location_state}</p>
