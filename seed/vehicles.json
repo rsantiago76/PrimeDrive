@@ -102,7 +102,7 @@
   {
     "id": "veh-005",
     "make": "Prime",
-    "model": "Metro Micro",
+    "model": "Prime CargoX",
     "year": 2030,
     "category": "Compact EV",
     "location_city": "Chicago",
@@ -116,6 +116,7 @@
       "Heated Seats",
       "Quick Unlock"
     ],
+    "description": "Maximize your fleet’s productivity with the Prime CargoX, a purpose-built electric van designed for efficient urban delivery and logistics. Featuring a flat floor and optimized interior volume, it offers exceptional cargo capacity with easy loading access. The electric powertrain delivers reliable, low-maintenance performance and significant range, ensuring uninterrupted daily operations. Operational costs are minimized through advanced energy management, while the durable construction withstands the demands of rigorous commercial use. The Prime CargoX is a practical, dependable solution for businesses prioritizing utility and streamlined execution.",
     "images": [
       "veh-005-hero.jpg",
       "veh-005-interior.jpg",
