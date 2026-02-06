@@ -1,16 +1,21 @@
-import secrets
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, Body
+from app.services.uploads import UploadService
+from app.schemas.damage_report import PresignedUrlRequest
 
 router = APIRouter()
 
-@router.post("/driver-documents/upload-url")
-async def driver_doc_upload_url(payload: dict):
-    file_key = f"driver-docs/{secrets.token_hex(8)}.jpg"
-    upload_url = f"https://example-presigned-url.invalid/{file_key}"
-    return {"file_key": file_key, "upload_url": upload_url}
-
-@router.post("/damage-reports/{report_id}/photos/upload-url")
-async def damage_photo_upload_url(report_id: str):
-    file_key = f"damage-photos/{report_id}/{secrets.token_hex(8)}.jpg"
-    upload_url = f"https://example-presigned-url.invalid/{file_key}"
-    return {"file_key": file_key, "upload_url": upload_url}
+@router.post("/presigned-url")
+async def get_presigned_url(request: PresignedUrlRequest):
+    """
+    Get a presigned URL for uploading files to S3.
+    """
+    response = UploadService.generate_presigned_url(
+        filename=request.filename,
+        content_type=request.content_type,
+        use_case=request.use_case
+    )
+    
+    if not response:
+        raise HTTPException(status_code=500, detail="Could not generate presigned URL")
+        
+    return response

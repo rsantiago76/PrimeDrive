@@ -4,9 +4,14 @@ import SearchPage from './SearchPage'
 import VehiclePage from './VehiclePage'
 import CheckoutPage from './CheckoutPage'
 import BookingsPage from './BookingsPage'
-import OwnerDashboard from './OwnerDashboard'
 import VerifyDriverPage from './VerifyDriverPage'
 import DamageReportPage from './DamageReportPage'
+import OwnerLayout from './OwnerLayout'
+import OwnerOverview from './OwnerOverview'
+import OwnerVehicles from './OwnerVehicles'
+import OwnerBookings from './OwnerBookings'
+import OwnerReports from './OwnerReports'
+import OwnerFinance from './OwnerFinance'
 
 export default function App() {
   return (
@@ -30,7 +35,13 @@ export default function App() {
           <Route path="/bookings" element={<BookingsPage />} />
           <Route path="/verify" element={<VerifyDriverPage />} />
           <Route path="/damage-report/:bookingId" element={<DamageReportPage />} />
-          <Route path="/owner" element={<OwnerDashboard />} />
+          <Route path="/owner" element={<OwnerLayout />}>
+            <Route index element={<OwnerOverview />} />
+            <Route path="vehicles" element={<OwnerVehicles />} />
+            <Route path="bookings" element={<OwnerBookings />} />
+            <Route path="reports" element={<OwnerReports />} />
+            <Route path="finance" element={<OwnerFinance />} />
+          </Route>
           <Route path="*" element={<div>Not found</div>} />
         </Routes>
       </main>

@@ -80,6 +80,13 @@ export default function VehiclePage() {
 
   return (
     <div>
+      {vehicle.images?.[0] && (
+        <img
+          src={`/images/${vehicle.images[0]}`}
+          alt={`${vehicle.make} ${vehicle.model}`}
+          style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '8px', marginBottom: '24px' }}
+        />
+      )}
       <h1>{vehicle.make} {vehicle.model}</h1>
       <p className="muted">{vehicle.category} • {vehicle.year} • {vehicle.location_city}, {vehicle.location_state}</p>
 
@@ -119,12 +126,12 @@ export default function VehiclePage() {
         <div className="card">
           <div className="cardTitle">Quote</div>
           <div className="muted">Days: {quote.days}</div>
-          <div className="muted">Base: ${(quote.base_total_cents/100).toFixed(2)}</div>
-          <div className="muted">Discount: -${(quote.discount_cents/100).toFixed(2)}</div>
-          <div className="muted">Add-ons: ${(quote.addons_total_cents/100).toFixed(2)}</div>
-          <div className="muted">Fees: ${(quote.fees_cents/100).toFixed(2)}</div>
-          <div className="price">Total: ${(quote.total_cents/100).toFixed(2)}</div>
-          <div className="muted">Deposit due now: ${(quote.deposit_cents/100).toFixed(2)}</div>
+          <div className="muted">Base: ${(quote.base_total_cents / 100).toFixed(2)}</div>
+          <div className="muted">Discount: -${(quote.discount_cents / 100).toFixed(2)}</div>
+          <div className="muted">Add-ons: ${(quote.addons_total_cents / 100).toFixed(2)}</div>
+          <div className="muted">Fees: ${(quote.fees_cents / 100).toFixed(2)}</div>
+          <div className="price">Total: ${(quote.total_cents / 100).toFixed(2)}</div>
+          <div className="muted">Deposit due now: ${(quote.deposit_cents / 100).toFixed(2)}</div>
           <div className="spacer" />
           <button className="btn" onClick={book}>Book & pay deposit</button>
         </div>

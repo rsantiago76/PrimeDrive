@@ -13,6 +13,7 @@ type Vehicle = {
   daily_cents: number
   mileage_limit_per_day: number
   features: string[]
+  images: string[]
 }
 
 export default function SearchPage() {
@@ -65,6 +66,13 @@ export default function SearchPage() {
         <div className="grid">
           {items.map(v => (
             <Link key={v.id} to={`/vehicle/${v.id}`} className="card linkCard">
+              {v.images?.[0] && (
+                <img
+                  src={`/images/${v.images[0]}`}
+                  alt={`${v.make} ${v.model}`}
+                  style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '4px 4px 0 0', marginBottom: '12px' }}
+                />
+              )}
               <div className="cardTitle">{v.make} {v.model}</div>
               <div className="muted">{v.category} • {v.year}</div>
               <div className="muted">{v.location_city}, {v.location_state}</div>
