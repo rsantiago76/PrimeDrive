@@ -76,7 +76,7 @@
   {
     "id": "veh-004",
     "make": "Prime",
-    "model": "Terra Pod",
+    "model": "Terra Hauler",
     "year": 2034,
     "category": "Adventure EV",
     "location_city": "Bozeman",
@@ -90,6 +90,7 @@
       "Thermal Cabin",
       "Trail Navigation"
     ],
+    "description": "Redefine capability with the Prime Terra Hauler, an all-electric pickup engineered for uncompromising performance. Built on a high-strength chassis, it combines massive torque with precision control, making it effortless to tow heavy loads or navigate challenging terrain. The advanced dual-motor system provides instant acceleration and intelligent traction management, ensuring stability whether you are hauling gear to a job site or escaping for a weekend adventure. Its rugged exterior conceals a sophisticated, tech-forward cabin designed for productivity and comfort, proving that raw power and refined innovation can coexist seamlessly. The Terra Hauler is the ultimate tool for those who demand efficiency without limits.",
     "images": [
       "veh-004-hero.jpg",
       "veh-004-interior.jpg",
