@@ -81,13 +81,16 @@ export default function VehiclePage() {
 
   return (
     <div>
-      {vehicle.images && vehicle.images.length > 0 && (
-        <div style={{ marginBottom: '24px' }}>
-          <img
-            src={`/images/${vehicle.images[selectedImageIndex]}`}
-            alt={`${vehicle.make} ${vehicle.model}`}
-            style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '8px', marginBottom: '12px' }}
-          />
+      <div style={{ marginBottom: '24px' }}>
+        <img
+          src={(vehicle.images && vehicle.images[selectedImageIndex]) ? `/images/${vehicle.images[selectedImageIndex]}` : '/images/placeholder.jpg'}
+          alt={`${vehicle.make} ${vehicle.model}`}
+          onError={(e) => {
+            e.currentTarget.src = '/images/placeholder.jpg'
+          }}
+          style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '8px', marginBottom: '12px' }}
+        />
+        {vehicle.images && vehicle.images.length > 0 && (
           <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '4px' }}>
             {vehicle.images.map((img: string, idx: number) => (
               <img
@@ -95,6 +98,9 @@ export default function VehiclePage() {
                 src={`/images/${img}`}
                 alt={`View ${idx + 1}`}
                 onClick={() => setSelectedImageIndex(idx)}
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none'
+                }}
                 style={{
                   width: '100px',
                   height: '70px',
@@ -108,8 +114,8 @@ export default function VehiclePage() {
               />
             ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
       <h1>{vehicle.make} {vehicle.model}</h1>
       <p className="muted">{vehicle.category} • {vehicle.year} • {vehicle.location_city}, {vehicle.location_state}</p>
 
