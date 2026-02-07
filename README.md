@@ -1,4 +1,4 @@
-# Prime Drive — Futuristic Car Rental Platform (MVP + Enterprise Signals)
+# Prime Drive  — Futuristic Car Rental Platform (MVP + Enterprise Signals)
 
 Prime Drive is a portfolio-ready, real-world car rental platform:
 - **Frontend:** React + TypeScript (Vite) hosted on **AWS Amplify Hosting**
