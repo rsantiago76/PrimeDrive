@@ -17,7 +17,9 @@ export default function App() {
   return (
     <div className="container">
       <header className="header">
-        <Link to="/search" className="brand">Prime Drive</Link>
+        <Link to="/search" className="brand">
+          <img src="/logo.png" alt="Prime Drive" style={{ height: '40px' }} />
+        </Link>
         <nav className="nav">
           <Link to="/search">Vehicles</Link>
           <Link to="/bookings">My Rentals</Link>
