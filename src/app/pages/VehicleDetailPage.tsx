@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { PageHeader } from '../components/layout/PageHeader';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
@@ -8,11 +8,15 @@ import { VehicleLocationMap } from '../components/VehicleLocationMap';
 import { RentalHistoryTimeline } from '../components/RentalHistoryTimeline';
 import { MaintenanceLogs } from '../components/MaintenanceLogs';
 import { DiagnosticsSummary } from '../components/DiagnosticsSummary';
+import { BookingModal } from '../components/booking/BookingModal';
+import { Button } from '../components/ui/Button';
+import { Calendar } from 'lucide-react';
 import { vehicleData } from '../data/vehicleData';
 
 export function VehicleDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   // Get the vehicle data based on the ID from the route
   const vehicle = id ? vehicleData[id] : null;
@@ -83,6 +87,29 @@ export function VehicleDetailPage() {
           <MaintenanceLogs />
         </div>
       </div>
+
+      {/* Booking Button */}
+      {status === 'available' && (
+        <div className="mt-8 text-center">
+          <Button
+            onClick={() => setIsBookingModalOpen(true)}
+            className="px-6 py-3 bg-[#22D3EE]/10 border border-[#22D3EE]/30 rounded-lg text-[#22D3EE] hover:bg-[#22D3EE]/20 transition-colors"
+          >
+            <Calendar className="w-5 h-5 mr-2" />
+            Book Now
+          </Button>
+        </div>
+      )}
+
+      {/* Booking Modal */}
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        vehicleId={vehicle.id}
+        vehicleName={vehicle.name}
+        fleetId={vehicle.fleetId}
+        dailyRate={vehicle.dailyRate}
+      />
     </>
   );
 }

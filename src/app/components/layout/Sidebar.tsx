@@ -8,13 +8,15 @@ import {
   BarChart3, 
   Settings,
   Users,
-  Zap
+  Zap,
+  CalendarCheck
 } from 'lucide-react';
 
 const navItems = [
   { icon: LayoutDashboard, label: 'Overview', path: '/' },
   { icon: Car, label: 'Fleet', path: '/fleet' },
   { icon: Calendar, label: 'Rentals', path: '/rentals' },
+  { icon: CalendarCheck, label: 'Reservations', path: '/reservations' },
   { icon: Users, label: 'Customers', path: '/customers' },
   { icon: Wrench, label: 'Maintenance', path: '/maintenance' },
   { icon: BarChart3, label: 'Analytics', path: '/analytics' },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { PageHeader } from '../components/layout/PageHeader';
 import { Button } from '../components/ui/button';
@@ -6,17 +6,24 @@ import { SearchInput } from '../components/ui/SearchInput';
 import { Select } from '../components/ui/select';
 import { Toggle } from '../components/ui/toggle';
 import { StatusBadge } from '../components/ui/StatusBadge';
-import { Plus, MapPin, Battery, Zap, Users, ArrowRight, Star } from 'lucide-react';
+import { BookingModal } from '../components/booking/BookingModal';
+import { Plus, MapPin, Battery, Zap, Users, ArrowRight, Star, Calendar } from 'lucide-react';
 import { vehicleData } from '../data/vehicleData';
 import { useFeaturedVehicles } from '../contexts/FeaturedVehiclesContext';
 
 export function FleetPage() {
   const navigate = useNavigate();
   const { featuredVehicles, toggleFeatured } = useFeaturedVehicles();
-  const [search, setSearch] = React.useState('');
-  const [typeFilter, setTypeFilter] = React.useState('');
-  const [statusFilter, setStatusFilter] = React.useState('');
-  const [availableOnly, setAvailableOnly] = React.useState(false);
+  const [search, setSearch] = useState('');
+  const [typeFilter, setTypeFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
+  const [availableOnly, setAvailableOnly] = useState(false);
+  const [bookingVehicle, setBookingVehicle] = useState<{
+    id: string;
+    name: string;
+    fleetId: string;
+    dailyRate: number;
+  } | null>(null);
 
   const vehicles = Object.values(vehicleData);
 
@@ -215,11 +222,16 @@ export function FleetPage() {
                   className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#22D3EE]/10 border border-[#22D3EE]/30 text-[#22D3EE] hover:bg-[#22D3EE]/20 transition-colors group"
                   onClick={(e) => {
                     e.stopPropagation();
-                    navigate(`/fleet/${vehicle.id}`);
+                    setBookingVehicle({
+                      id: vehicle.id,
+                      name: vehicle.name,
+                      fleetId: vehicle.fleetId,
+                      dailyRate: vehicle.dailyRate,
+                    });
                   }}
                 >
-                  <span className="text-sm font-medium">View Details</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span className="text-sm font-medium">Book Now</span>
+                  <Calendar className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
@@ -239,6 +251,18 @@ export function FleetPage() {
           Showing <span className="text-white font-semibold">{filteredVehicles.length}</span> of{' '}
           <span className="text-white font-semibold">{vehicles.length}</span> vehicles
         </div>
+      )}
+
+      {/* Booking Modal */}
+      {bookingVehicle && (
+        <BookingModal
+          isOpen={true}
+          onClose={() => setBookingVehicle(null)}
+          vehicleId={bookingVehicle.id}
+          vehicleName={bookingVehicle.name}
+          fleetId={bookingVehicle.fleetId}
+          dailyRate={bookingVehicle.dailyRate}
+        />
       )}
     </>
   );
