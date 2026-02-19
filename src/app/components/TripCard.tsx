@@ -13,17 +13,18 @@ interface TripCardProps {
 
 export function TripCard({ pickup, destination, time, duration, passenger, vehicleId, status }: TripCardProps) {
   const statusConfig = {
-    scheduled: { color: 'text-[#9CA3AF]', bg: 'bg-[#9CA3AF]/10', label: 'Scheduled', glow: false },
+    scheduled: { color: 'text-[#9CA3AF]', bg: 'bg-[#9CA3AF]/10', label: 'Scheduled' },
     active: { color: 'text-[#22D3EE]', bg: 'bg-[#22D3EE]/10', label: 'Active', glow: true },
-    completed: { color: 'text-[#10B981]', bg: 'bg-[#10B981]/10', label: 'Completed', glow: false },
+    completed: { color: 'text-[#10B981]', bg: 'bg-[#10B981]/10', label: 'Completed' },
   };
 
   const config = statusConfig[status];
 
   return (
     <div
-      className={`backdrop-blur-md bg-[#111827]/60 border border-white/10 rounded-[14px] p-4 transition-all duration-300 hover:bg-[#111827]/80 ${config.glow ? 'shadow-[0_0_20px_rgba(34,211,238,0.1)]' : ''
-        }`}
+      className={`backdrop-blur-md bg-[#111827]/60 border border-white/10 rounded-[14px] p-4 transition-all duration-300 hover:bg-[#111827]/80 ${
+        config.glow ? 'shadow-[0_0_20px_rgba(34,211,238,0.1)]' : ''
+      }`}
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
