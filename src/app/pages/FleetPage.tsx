@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { PageHeader } from '../components/layout/PageHeader';
-import { Button } from '../components/ui/button';
+import { Button } from '../components/ui/Button';
 import { SearchInput } from '../components/ui/SearchInput';
-import { Select } from '../components/ui/select';
-import { Toggle } from '../components/ui/toggle';
+import { Select } from '../components/ui/Select';
+import { Toggle } from '../components/ui/Toggle';
 import { StatusBadge } from '../components/ui/StatusBadge';
-import { Plus, MapPin, Battery, Zap, Users, ArrowRight, Star } from 'lucide-react';
+import { BookingModal } from '../components/booking/BookingModal';
+import { Plus, MapPin, Battery, Zap, Users, ArrowRight, Star, Calendar } from 'lucide-react';
 import { vehicleData } from '../data/vehicleData';
 import { useFeaturedVehicles } from '../contexts/FeaturedVehiclesContext';
 
 export function FleetPage() {
   const navigate = useNavigate();
   const { featuredVehicles, toggleFeatured } = useFeaturedVehicles();
-  const [search, setSearch] = React.useState('');
-  const [typeFilter, setTypeFilter] = React.useState('');
-  const [statusFilter, setStatusFilter] = React.useState('');
-  const [availableOnly, setAvailableOnly] = React.useState(false);
+  const [search, setSearch] = useState('');
+  const [typeFilter, setTypeFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
+  const [availableOnly, setAvailableOnly] = useState(false);
+  const [bookingVehicle, setBookingVehicle] = useState<{
+    id: string;
+    name: string;
+    fleetId: string;
+    dailyRate: number;
+  } | null>(null);
 
   const vehicles = Object.values(vehicleData);
 
@@ -147,18 +154,20 @@ export function FleetPage() {
               {/* Featured Star */}
               <div className="absolute top-4 left-4 z-10">
                 <button
-                  className={`backdrop-blur-md bg-[#111827]/80 border rounded-lg px-3 py-1.5 transition-all hover:scale-110 ${featuredVehicles.has(vehicle.id)
-                      ? 'border-[#FFD700]/50 hover:border-[#FFD700]'
+                  className={`backdrop-blur-md bg-[#111827]/80 border rounded-lg px-3 py-1.5 transition-all hover:scale-110 ${
+                    featuredVehicles.has(vehicle.id) 
+                      ? 'border-[#FFD700]/50 hover:border-[#FFD700]' 
                       : 'border-white/10 hover:border-white/30'
-                    }`}
+                  }`}
                   onClick={(e) => handleToggleFeatured(vehicle.id, e)}
                   title={featuredVehicles.has(vehicle.id) ? 'Remove from featured' : 'Add to featured'}
                 >
-                  <Star
-                    className={`w-4 h-4 transition-all ${featuredVehicles.has(vehicle.id)
-                        ? 'text-[#FFD700] fill-[#FFD700]'
+                  <Star 
+                    className={`w-4 h-4 transition-all ${
+                      featuredVehicles.has(vehicle.id) 
+                        ? 'text-[#FFD700] fill-[#FFD700]' 
                         : 'text-[#9CA3AF]'
-                      }`}
+                    }`} 
                   />
                 </button>
               </div>
@@ -215,11 +224,16 @@ export function FleetPage() {
                   className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#22D3EE]/10 border border-[#22D3EE]/30 text-[#22D3EE] hover:bg-[#22D3EE]/20 transition-colors group"
                   onClick={(e) => {
                     e.stopPropagation();
-                    navigate(`/fleet/${vehicle.id}`);
+                    setBookingVehicle({
+                      id: vehicle.id,
+                      name: vehicle.name,
+                      fleetId: vehicle.fleetId,
+                      dailyRate: vehicle.dailyRate,
+                    });
                   }}
                 >
-                  <span className="text-sm font-medium">View Details</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span className="text-sm font-medium">Book Now</span>
+                  <Calendar className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
@@ -233,12 +247,24 @@ export function FleetPage() {
           <p className="text-[#9CA3AF]">No vehicles found matching your filters.</p>
         </div>
       )}
-
+      
       {filteredVehicles.length > 0 && (
         <div className="mt-6 text-center text-sm text-[#9CA3AF]">
           Showing <span className="text-white font-semibold">{filteredVehicles.length}</span> of{' '}
           <span className="text-white font-semibold">{vehicles.length}</span> vehicles
         </div>
+      )}
+
+      {/* Booking Modal */}
+      {bookingVehicle && (
+        <BookingModal
+          isOpen={true}
+          onClose={() => setBookingVehicle(null)}
+          vehicleId={bookingVehicle.id}
+          vehicleName={bookingVehicle.name}
+          fleetId={bookingVehicle.fleetId}
+          dailyRate={bookingVehicle.dailyRate}
+        />
       )}
     </>
   );

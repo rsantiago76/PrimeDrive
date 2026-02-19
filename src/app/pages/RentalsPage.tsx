@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
-import { Button } from '../components/ui/button';
+import { Button } from '../components/ui/Button';
 import { RentalTable } from '../components/RentalTable';
 import { RentalFilters } from '../components/RentalFilters';
 import { RentalStats } from '../components/RentalStats';
@@ -33,9 +33,9 @@ export function RentalsPage() {
       {/* Filters and Search */}
       <div className="mb-6">
         <div className="backdrop-blur-xl bg-[#111827]/70 border border-white/10 rounded-[16px] p-6"
-          style={{
-            backgroundImage: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.00) 100%)',
-          }}>
+             style={{
+               backgroundImage: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.00) 100%)',
+             }}>
           <div className="flex flex-col lg:flex-row gap-4">
             {/* Search Bar */}
             <div className="flex-1">
@@ -52,9 +52,9 @@ export function RentalsPage() {
             </div>
 
             {/* Status Filter */}
-            <RentalFilters
-              statusFilter={statusFilter}
-              onStatusChange={setStatusFilter}
+            <RentalFilters 
+              statusFilter={statusFilter} 
+              onStatusChange={setStatusFilter} 
             />
           </div>
         </div>

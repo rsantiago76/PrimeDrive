@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from './ui/Modal';
-import { Button } from './ui/button';
-import { Select } from './ui/select';
+import { Button } from './ui/Button';
+import { Select } from './ui/Select';
 import { Calendar, Clock, MapPin, DollarSign } from 'lucide-react';
 
 interface BookingModalProps {
