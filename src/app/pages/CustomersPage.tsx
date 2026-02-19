@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { PageHeader } from '../components/layout/PageHeader';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { DataTable } from '../components/ui/DataTable';
 import { StatusBadge } from '../components/ui/StatusBadge';
 import { SearchInput } from '../components/ui/SearchInput';
@@ -99,7 +99,8 @@ export function CustomersPage() {
         title="Customer Management"
         subtitle="Manage customer accounts and rental history"
         action={
-          <Button variant="primary" size="md" icon={<UserPlus />}>
+          <Button variant="default" size="default">
+            <UserPlus className="mr-2 h-4 w-4" />
             Add Customer
           </Button>
         }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from './ui/Modal';
-import { Button } from './ui/Button';
-import { Select } from './ui/Select';
+import { Button } from './ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Calendar, Clock, MapPin, DollarSign } from 'lucide-react';
 
 interface BookingModalProps {
@@ -9,6 +9,36 @@ interface BookingModalProps {
   onClose: () => void;
   vehicleId?: string;
   vehicleName?: string;
+}
+
+interface FormSelectProps {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: { value: string; label: string }[];
+  placeholder: string;
+}
+
+function FormSelect({ label, value, onChange, options, placeholder }: FormSelectProps) {
+  return (
+    <div>
+      <label className="block text-xs text-[#9CA3AF] mb-2 uppercase tracking-wider">
+        {label}
+      </label>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger className="w-full bg-white/5 border-white/10 text-white">
+          <SelectValue placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent>
+          {options.map((option) => (
+            <SelectItem key={option.value} value={option.value}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
 }
 
 export function BookingModal({ isOpen, onClose, vehicleId, vehicleName }: BookingModalProps) {
@@ -41,7 +71,10 @@ export function BookingModal({ isOpen, onClose, vehicleId, vehicleName }: Bookin
           <Button variant="secondary" onClick={onClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button variant="secondary" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button variant="default" onClick={handleSubmit}>
             Confirm Booking
           </Button>
         </>
@@ -101,7 +134,7 @@ export function BookingModal({ isOpen, onClose, vehicleId, vehicleName }: Bookin
           <h3 className="text-white font-semibold mb-4">Rental Details</h3>
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
-              <Select
+              <FormSelect
                 label="Pickup Location"
                 value={formData.pickupLocation}
                 onChange={(value) => setFormData({ ...formData, pickupLocation: value })}
@@ -113,7 +146,7 @@ export function BookingModal({ isOpen, onClose, vehicleId, vehicleName }: Bookin
                 ]}
                 placeholder="Select location"
               />
-              <Select
+              <FormSelect
                 label="Dropoff Location"
                 value={formData.dropoffLocation}
                 onChange={(value) => setFormData({ ...formData, dropoffLocation: value })}

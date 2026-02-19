@@ -1,6 +1,6 @@
 import React from 'react';
 import { Zap, CheckCircle2, Link as LinkIcon, Settings } from 'lucide-react';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 
 interface IntegrationSettingsProps {
   onChanges: () => void;
@@ -132,12 +132,12 @@ export function IntegrationSettings({ onChanges }: IntegrationSettingsProps) {
                     <button className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[#9CA3AF] hover:text-white transition-all">
                       <Settings className="w-4 h-4" />
                     </button>
-                    <Button variant="danger" size="sm">
+                    <Button variant="destructive" size="sm">
                       Disconnect
                     </Button>
                   </div>
                 ) : (
-                  <Button variant="primary" size="sm">
+                  <Button variant="default" size="sm">
                     Connect
                   </Button>
                 )}
@@ -155,7 +155,7 @@ export function IntegrationSettings({ onChanges }: IntegrationSettingsProps) {
         }}
       >
         <h3 className="text-lg font-bold text-white mb-6">API Access</h3>
-        
+
         <div className="space-y-4">
           <div className="p-5 rounded-xl bg-white/5 border border-white/10">
             <div className="flex items-start justify-between mb-4">
@@ -200,7 +200,7 @@ export function IntegrationSettings({ onChanges }: IntegrationSettingsProps) {
               </div>
             </div>
             <div className="flex items-center justify-end">
-              <Button variant="primary" size="sm">
+              <Button variant="default" size="sm">
                 Save Webhook
               </Button>
             </div>
@@ -216,7 +216,7 @@ export function IntegrationSettings({ onChanges }: IntegrationSettingsProps) {
         }}
       >
         <h3 className="text-lg font-bold text-white mb-6">API Usage</h3>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="p-4 rounded-xl bg-[#22D3EE]/10 border border-[#22D3EE]/20">
             <p className="text-sm text-[#9CA3AF] mb-1">Requests Today</p>

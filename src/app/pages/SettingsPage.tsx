@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { SettingsTabs } from '../components/settings/SettingsTabs';
 import { ProfileSettings } from '../components/settings/ProfileSettings';
 import { NotificationSettings } from '../components/settings/NotificationSettings';
@@ -37,7 +37,8 @@ export function SettingsPage() {
         subtitle="Configure your account, preferences, and system settings"
         action={
           hasChanges && (
-            <Button variant="primary" size="md" icon={<Save />}>
+            <Button variant="default" size="default">
+              <Save className="mr-2 h-4 w-4" />
               Save Changes
             </Button>
           )

@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
 import { MetricCard } from '../components/ui/MetricCard';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { FleetStatusTable } from '../components/FleetStatusTable';
 import { VehicleShowcase } from '../components/VehicleShowcase';
 import { DollarSign, Car, Activity, AlertTriangle, Download } from 'lucide-react';
@@ -13,7 +13,8 @@ export function OverviewPage() {
         title="Fleet Overview"
         subtitle="Real-time fleet performance and operational metrics"
         action={
-          <Button variant="primary" size="md" icon={<Download />}>
+          <Button variant="default" size="default">
+            <Download className="mr-2 h-4 w-4" />
             Export Report
           </Button>
         }

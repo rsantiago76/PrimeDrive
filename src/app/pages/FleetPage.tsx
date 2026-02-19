@@ -1,14 +1,38 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { PageHeader } from '../components/layout/PageHeader';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { SearchInput } from '../components/ui/SearchInput';
-import { Select } from '../components/ui/Select';
-import { Toggle } from '../components/ui/Toggle';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import { Toggle } from '../components/ui/toggle';
 import { StatusBadge } from '../components/ui/StatusBadge';
 import { Plus, MapPin, Battery, Zap, Users, ArrowRight, Star } from 'lucide-react';
 import { vehicleData } from '../data/vehicleData';
 import { useFeaturedVehicles } from '../contexts/FeaturedVehiclesContext';
+
+interface FilterSelectProps {
+  placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: { value: string; label: string }[];
+}
+
+function FilterSelect({ placeholder, value, onChange, options }: FilterSelectProps) {
+  return (
+    <Select value={value || "ALL"} onValueChange={(val) => onChange(val === "ALL" ? "" : val)}>
+      <SelectTrigger className="w-full bg-[#111827]/60 border-white/10 text-white">
+        <SelectValue placeholder={placeholder} />
+      </SelectTrigger>
+      <SelectContent>
+        {options.map((option) => (
+          <SelectItem key={option.value || "ALL"} value={option.value || "ALL"}>
+            {option.label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
+}
 
 export function FleetPage() {
   const navigate = useNavigate();
@@ -40,7 +64,8 @@ export function FleetPage() {
         title="Fleet Management"
         subtitle="Browse and manage all vehicles in your autonomous fleet"
         action={
-          <Button variant="primary" size="md" icon={<Plus />}>
+          <Button variant="default" size="default">
+            <Plus className="mr-2 h-4 w-4" />
             Add Vehicle
           </Button>
         }
@@ -54,7 +79,7 @@ export function FleetPage() {
             value={search}
             onChange={setSearch}
           />
-          <Select
+          <FilterSelect
             placeholder="All Types"
             value={typeFilter}
             onChange={setTypeFilter}
@@ -74,7 +99,7 @@ export function FleetPage() {
               { value: 'Passenger Van', label: 'Passenger Van' },
             ]}
           />
-          <Select
+          <FilterSelect
             placeholder="All Statuses"
             value={statusFilter}
             onChange={setStatusFilter}
@@ -86,10 +111,13 @@ export function FleetPage() {
           />
           <div className="flex items-center">
             <Toggle
-              checked={availableOnly}
-              onChange={setAvailableOnly}
-              label="Available Only"
-            />
+              pressed={availableOnly}
+              onPressedChange={setAvailableOnly}
+              aria-label="Toggle available only"
+              className="gap-2 data-[state=on]:bg-[#22D3EE]/20 data-[state=on]:text-[#22D3EE] border border-white/10 hover:bg-white/5"
+            >
+              Available Only
+            </Toggle>
           </div>
         </div>
       </div>
@@ -147,20 +175,18 @@ export function FleetPage() {
               {/* Featured Star */}
               <div className="absolute top-4 left-4 z-10">
                 <button
-                  className={`backdrop-blur-md bg-[#111827]/80 border rounded-lg px-3 py-1.5 transition-all hover:scale-110 ${
-                    featuredVehicles.has(vehicle.id) 
-                      ? 'border-[#FFD700]/50 hover:border-[#FFD700]' 
-                      : 'border-white/10 hover:border-white/30'
-                  }`}
+                  className={`backdrop-blur-md bg-[#111827]/80 border rounded-lg px-3 py-1.5 transition-all hover:scale-110 ${featuredVehicles.has(vehicle.id)
+                    ? 'border-[#FFD700]/50 hover:border-[#FFD700]'
+                    : 'border-white/10 hover:border-white/30'
+                    }`}
                   onClick={(e) => handleToggleFeatured(vehicle.id, e)}
                   title={featuredVehicles.has(vehicle.id) ? 'Remove from featured' : 'Add to featured'}
                 >
-                  <Star 
-                    className={`w-4 h-4 transition-all ${
-                      featuredVehicles.has(vehicle.id) 
-                        ? 'text-[#FFD700] fill-[#FFD700]' 
-                        : 'text-[#9CA3AF]'
-                    }`} 
+                  <Star
+                    className={`w-4 h-4 transition-all ${featuredVehicles.has(vehicle.id)
+                      ? 'text-[#FFD700] fill-[#FFD700]'
+                      : 'text-[#9CA3AF]'
+                      }`}
                   />
                 </button>
               </div>
@@ -235,7 +261,7 @@ export function FleetPage() {
           <p className="text-[#9CA3AF]">No vehicles found matching your filters.</p>
         </div>
       )}
-      
+
       {filteredVehicles.length > 0 && (
         <div className="mt-6 text-center text-sm text-[#9CA3AF]">
           Showing <span className="text-white font-semibold">{filteredVehicles.length}</span> of{' '}
