@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { PageHeader } from '../components/layout/PageHeader';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { DataTable } from '../components/ui/DataTable';
 import { StatusBadge } from '../components/ui/StatusBadge';
 import { SearchInput } from '../components/ui/SearchInput';

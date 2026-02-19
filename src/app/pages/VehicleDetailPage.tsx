@@ -9,7 +9,7 @@ import { RentalHistoryTimeline } from '../components/RentalHistoryTimeline';
 import { MaintenanceLogs } from '../components/MaintenanceLogs';
 import { DiagnosticsSummary } from '../components/DiagnosticsSummary';
 import { BookingModal } from '../components/booking/BookingModal';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { Calendar } from 'lucide-react';
 import { vehicleData } from '../data/vehicleData';
 
