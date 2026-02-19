@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
 import { MetricCard } from '../components/ui/MetricCard';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { FleetStatusTable } from '../components/FleetStatusTable';
 import { VehicleShowcase } from '../components/VehicleShowcase';
 import { DollarSign, Car, Activity, AlertTriangle, Download } from 'lucide-react';

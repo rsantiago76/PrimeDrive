@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { SettingsTabs } from '../components/settings/SettingsTabs';
 import { ProfileSettings } from '../components/settings/ProfileSettings';
 import { NotificationSettings } from '../components/settings/NotificationSettings';
