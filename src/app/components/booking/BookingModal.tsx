@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { X, Calendar, MapPin, DollarSign, CheckCircle2 } from 'lucide-react';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import { useReservations } from '../../contexts/ReservationsContext';
 
 interface BookingModalProps {
@@ -37,7 +37,7 @@ export function BookingModal({ isOpen, onClose, vehicleId, vehicleName, fleetId,
   const { addReservation } = useReservations();
   const [step, setStep] = useState<'form' | 'success'>('form');
   const [reservationId, setReservationId] = useState('');
-  
+
   // Form state
   const [pickupDateTime, setPickupDateTime] = useState('');
   const [returnDateTime, setReturnDateTime] = useState('');
