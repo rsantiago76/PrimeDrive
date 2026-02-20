@@ -21,9 +21,8 @@ export function Sidebar({ isOpen, onClose, children, title }: SidebarProps) {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-full max-w-md bg-[#0A0F1E] border-l border-white/10 z-50 transform transition-transform duration-300 ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 h-full w-full max-w-md bg-[#0A0F1E] border-l border-white/10 z-50 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <div className="h-full flex flex-col">
           {/* Header */}
