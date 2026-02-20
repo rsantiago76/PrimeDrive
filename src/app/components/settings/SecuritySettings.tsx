@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Shield, Key, Lock, Smartphone, Clock, AlertTriangle } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Button } from '../ui/Button';
 
 interface SecuritySettingsProps {
   onChanges: () => void;
@@ -20,7 +20,7 @@ export function SecuritySettings({ onChanges }: SecuritySettingsProps) {
         }}
       >
         <h3 className="text-lg font-bold text-white mb-6">Password & Authentication</h3>
-
+        
         <div className="space-y-4">
           <div className="p-5 rounded-xl bg-white/5 border border-white/10">
             <div className="flex items-start justify-between mb-4">
@@ -87,7 +87,7 @@ export function SecuritySettings({ onChanges }: SecuritySettingsProps) {
         }}
       >
         <h3 className="text-lg font-bold text-white mb-6">Session Management</h3>
-
+        
         <div className="space-y-4">
           <div>
             <label className="flex items-center gap-2 text-sm font-medium text-[#9CA3AF] mb-3">
@@ -150,7 +150,7 @@ export function SecuritySettings({ onChanges }: SecuritySettingsProps) {
         }}
       >
         <h3 className="text-lg font-bold text-white mb-6">Recent Security Activity</h3>
-
+        
         <div className="space-y-3">
           <div className="flex items-start gap-3 p-3 rounded-lg bg-white/5">
             <div className="w-8 h-8 rounded-lg bg-[#10B981]/10 flex items-center justify-center flex-shrink-0">
