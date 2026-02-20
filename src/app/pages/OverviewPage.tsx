@@ -1,9 +1,10 @@
 import React from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
 import { MetricCard } from '../components/ui/MetricCard';
-import { Button } from '../components/ui/button';
+import { Button } from '../components/ui/Button';
 import { FleetStatusTable } from '../components/FleetStatusTable';
 import { VehicleShowcase } from '../components/VehicleShowcase';
+import { TechStack } from '../components/TechStack';
 import { DollarSign, Car, Activity, AlertTriangle, Download } from 'lucide-react';
 
 export function OverviewPage() {
@@ -63,6 +64,9 @@ export function OverviewPage() {
         <h2 className="text-xl font-bold text-white mb-4">Live Fleet Status</h2>
         <FleetStatusTable />
       </div>
+
+      {/* Tech Stack */}
+      <TechStack />
     </>
   );
 }

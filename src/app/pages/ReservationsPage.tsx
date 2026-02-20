@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
 import { SearchInput } from '../components/ui/SearchInput';
-import { Button } from '../components/ui/button';
-import { Select } from '../components/ui/select';
+import { Select } from '../components/ui/Select';
+import { Badge } from '../components/ui/badge';
+import { Button } from '../components/ui/Button';
 import { useReservations } from '../contexts/ReservationsContext';
 import { Calendar, MapPin, DollarSign, Clock, X, CheckCircle2 } from 'lucide-react';
 
@@ -202,7 +203,7 @@ export function ReservationsPage() {
                   <div className="flex items-center gap-2 text-[#9CA3AF]">
                     <MapPin className="w-4 h-4" />
                     <span className="text-sm">
-                      {reservation.pickupLocation === reservation.dropoffLocation
+                      {reservation.pickupLocation === reservation.dropoffLocation 
                         ? 'Same location pickup & return'
                         : 'Different pickup & return locations'}
                     </span>

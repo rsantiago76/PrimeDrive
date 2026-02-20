@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
-import { Button } from '../components/ui/button';
+import { Button } from '../components/ui/Button';
 import { MaintenanceFrequencyAnalysis } from '../components/MaintenanceFrequencyAnalysis';
 import { Calendar, Download } from 'lucide-react';
 
