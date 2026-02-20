@@ -5,6 +5,7 @@ import { Button } from '../components/ui/Button';
 import { FleetStatusTable } from '../components/FleetStatusTable';
 import { VehicleShowcase } from '../components/VehicleShowcase';
 import { TechStack } from '../components/TechStack';
+import { ComingSoon } from '../components/ComingSoon';
 import { DollarSign, Car, Activity, AlertTriangle, Download } from 'lucide-react';
 
 export function OverviewPage() {
@@ -67,6 +68,9 @@ export function OverviewPage() {
 
       {/* Tech Stack */}
       <TechStack />
+
+      {/* Coming Soon */}
+      <ComingSoon />
     </>
   );
 }

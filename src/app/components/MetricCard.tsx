@@ -1,63 +1,50 @@
 import React from 'react';
-import { TrendingUp, TrendingDown } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 
 interface MetricCardProps {
   label: string;
-  value: string | number;
-  delta?: {
-    value: number;
-    trend: 'up' | 'down';
-  };
+  value: string;
+  change?: number;
+  suffix?: string;
   icon?: React.ReactNode;
-  iconBg?: string;
-  iconColor?: string;
-  sparkline?: React.ReactNode;
+  trend?: 'up' | 'down' | 'neutral';
+  highlight?: boolean;
 }
 
-export function MetricCard({ 
-  label, 
-  value, 
-  delta, 
-  icon, 
-  iconBg = 'bg-[#22D3EE]/10',
-  iconColor = 'text-[#22D3EE]',
-  sparkline 
-}: MetricCardProps) {
+export function MetricCard({ label, value, change, suffix, icon, trend = 'neutral', highlight = false }: MetricCardProps) {
+  const getTrendIcon = () => {
+    if (trend === 'up') return <TrendingUp className="w-3.5 h-3.5" />;
+    if (trend === 'down') return <TrendingDown className="w-3.5 h-3.5" />;
+    return <Minus className="w-3.5 h-3.5" />;
+  };
+
+  const getTrendColor = () => {
+    if (trend === 'up') return 'text-[#10B981]';
+    if (trend === 'down') return 'text-[#EF4444]';
+    return 'text-[#9CA3AF]';
+  };
+
   return (
-    <div className="backdrop-blur-xl bg-[#111827]/70 border border-white/10 rounded-[16px] p-5 hover:border-[#22D3EE]/40 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] transition-all duration-300"
-         style={{
-           backgroundImage: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.00) 100%)',
-         }}>
+    <div
+      className={`backdrop-blur-md bg-[#111827]/60 border border-white/10 rounded-[14px] p-5 transition-all duration-300 ${
+        highlight ? 'shadow-[0_0_24px_rgba(34,211,238,0.15)] border-[#22D3EE]/30' : ''
+      }`}
+    >
       <div className="flex items-start justify-between mb-3">
-        {icon && (
-          <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center shadow-lg`}>
-            <div className={iconColor}>
-              {icon}
-            </div>
-          </div>
-        )}
-        {delta && (
-          <div className={`flex items-center gap-1 px-2 py-1 rounded-full ${
-            delta.trend === 'up' 
-              ? 'bg-[#10B981]/10 text-[#10B981] border border-[#10B981]/20' 
-              : 'bg-[#EF4444]/10 text-[#EF4444] border border-[#EF4444]/20'
-          }`}>
-            {delta.trend === 'up' ? (
-              <TrendingUp className="w-3 h-3" />
-            ) : (
-              <TrendingDown className="w-3 h-3" />
-            )}
-            <span className="text-xs font-medium">
-              {delta.trend === 'up' ? '+' : ''}{delta.value}%
-            </span>
-          </div>
-        )}
+        <p className="text-[10px] uppercase tracking-wider text-[#9CA3AF] font-medium">{label}</p>
+        {icon && <div className="text-[#22D3EE]">{icon}</div>}
       </div>
-      <p className="text-3xl font-bold text-white mb-1">{value}</p>
-      <p className="text-[10px] uppercase tracking-wider text-[#9CA3AF] font-medium">{label}</p>
-      {sparkline && (
-        <div className="mt-3">
-          {sparkline}
+
+      <div className="flex items-baseline gap-2 mb-2">
+        <span className="text-3xl font-bold text-white leading-none">{value}</span>
+        {suffix && <span className="text-sm text-[#9CA3AF] font-medium">{suffix}</span>}
+      </div>
+
+      {change !== undefined && (
+        <div className={`flex items-center gap-1 text-xs font-medium ${getTrendColor()}`}>
+          {getTrendIcon()}
+          <span>{Math.abs(change)}%</span>
+          <span className="text-[#9CA3AF]">vs last week</span>
         </div>
       )}
     </div>
